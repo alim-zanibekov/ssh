@@ -1,0 +1,21 @@
+{
+  "name": "ssh-browser",
+  "version": "1.0.0",
+  "description": "miningos-ssh frontend",
+  "main": "",
+  "scripts": {
+    "start": "webpack -w",
+    "build": "webpack"
+  },
+  "author": "Alim Zanibekov",
+  "license": "MIT",
+  "dependencies": {
+    "css-loader": "^1.0.0",
+    "html-webpack-plugin": "^4.0.0-alpha",
+    "source-map-loader": "^0.2.3",
+    "style-loader": "^0.22.1",
+    "webpack": "^4.16.5",
+    "webpack-cli": "^3.1.0",
+    "xterm": "^3.5.1"
+  }
+}

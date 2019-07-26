@@ -1,0 +1,14 @@
+#terminal-container {
+    width: 900px;
+    height: 450px;
+    margin: auto;
+}
+
+#dispose {
+    margin: 20px auto 0 auto;
+    display: block;
+}
+
+#reload {
+    margin-bottom: 20px;
+}

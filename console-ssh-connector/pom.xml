@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>com.artic.os.miner</groupId>
+        <artifactId>artic-parent</artifactId>
+        <version>1.0.0</version>
+        <relativePath>../pom.xml</relativePath>
+    </parent>
+
+    <artifactId>console-ssh-connector</artifactId>
+    <packaging>mvn-golang</packaging> <!-- SIC: packaging must be mvn-golang -->
+
+    <properties>
+        <target.name>console-ssh-connector</target.name>
+    </properties>
+
+    <build>
+        <sourceDirectory>${basedir}${file.separator}src</sourceDirectory>
+        <directory>${basedir}${file.separator}target</directory>
+
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-clean-plugin</artifactId>
+                <configuration>
+                    <followSymLinks>false</followSymLinks>
+                    <excludeDefaultDirectories>true</excludeDefaultDirectories>
+                    <filesets>
+                        <fileset>
+                            <directory>${basedir}${file.separator}target</directory>
+                        </fileset>
+                    </filesets>
+                </configuration>
+            </plugin>
+            
+            <!-- https://github.com/raydac/mvn-golang -->
+            <!-- https://github.com/raydac/mvn-golang/wiki/PluginConfigParameters -->
+            <!-- Compile GO files -->
+            <plugin>
+                <groupId>com.igormaznitsa</groupId>
+                <artifactId>mvn-golang-wrapper</artifactId>
+                <extensions>true</extensions>
+                <configuration>
+                    <useEnvVars>true</useEnvVars>
+                    <disableSSLcheck>true</disableSSLcheck>
+                    <targetOs>linux</targetOs>
+                    <targetArch>amd64</targetArch>
+                    <verbose>false</verbose>
+                </configuration>
+            </plugin>
+
+            <!-- Generate maven artifact -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-install-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>save-result-as-artifact</id>
+                        <phase>install</phase>
+                        <goals>
+                            <goal>install-file</goal>
+                        </goals>
+                        <configuration>
+                            <file>${basedir}${file.separator}target${file.separator}${project.build.finalName}</file>
+                            <groupId>${project.groupId}</groupId>
+                            <artifactId>${project.artifactId}</artifactId>
+                            <version>${project.version}</version>
+                            <!-- NB! packaging allows to select extension  -->
+                            <packaging>bin</packaging>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+
+        </plugins>
+    </build>
+</project>
