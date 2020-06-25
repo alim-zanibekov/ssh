@@ -6,8 +6,8 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <groupId>com.artic.os.miner</groupId>
-        <artifactId>artic-parent</artifactId>
+        <groupId>com.alimzanibekov.ssh</groupId>
+        <artifactId>ssh</artifactId>
         <version>1.0.0</version>
         <relativePath>../pom.xml</relativePath>
     </parent>
@@ -74,6 +74,9 @@
                             <goal>npm</goal>
                         </goals>
                         <configuration>
+                            <environmentVariables>
+                                <TARGET>${project.build.directory}${file.separator}static</TARGET>
+                            </environmentVariables>
                             <arguments>run-script build</arguments>
                         </configuration>
                     </execution>
@@ -87,6 +90,7 @@
                 <groupId>com.igormaznitsa</groupId>
                 <artifactId>mvn-golang-wrapper</artifactId>
                 <extensions>true</extensions>
+                <version>2.3.4</version>
                 <configuration>
                     <useEnvVars>true</useEnvVars>
                     <disableSSLcheck>true</disableSSLcheck>
@@ -160,14 +164,6 @@
                                     <directory>${basedir}${file.separator}docker</directory>
                                     <includes>
                                         <include>**/*</include>
-                                    </includes>
-                                    <filtering>true</filtering>
-                                </resource>
-
-                                <resource>
-                                    <directory>${basedir}${file.separator}src${file.separator}webapp</directory>
-                                    <includes>
-                                        <include>**/static/**</include>
                                     </includes>
                                     <filtering>true</filtering>
                                 </resource>

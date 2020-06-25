@@ -8,12 +8,12 @@ ENV WRITE_BUFFER_SIZE=1024
 ENV READ_BUFFER_SIZE=1024
 ENV AGENT_TERMINAL_WAIT_TIMEOUT=5
 
-RUN mkdir -p /masteros/bin && mkdir -p /masteros/bin/static && apt-get update && apt-get -y install mc
-COPY console-manager-1.0.0 /masteros/bin
-COPY ./static/* /masteros/bin/static/
-RUN chmod +x /masteros/bin/console-manager-1.0.0 \
-    && ln -s /masteros/bin/console-manager-1.0.0 /masteros/bin/console-manager
+RUN mkdir -p /console-manager/bin && mkdir -p /console-manager/bin/static && apt-get update && apt-get -y install mc
+COPY console-manager-1.0.0 /console-manager/bin
+COPY ./static/* /console-manager/bin/static/
+RUN chmod +x /console-manager/bin/console-manager-1.0.0 \
+    && ln -s /console-manager/bin/console-manager-1.0.0 /console-manager/bin/console-manager
 
 EXPOSE 8888 9999 4000
-WORKDIR /masteros/bin
-CMD /masteros/bin/console-manager
+WORKDIR /console-manager/bin
+CMD /console-manager/bin/console-manager

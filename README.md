@@ -1,5 +1,5 @@
 ```sh
-$ mvn clean compile site 
+$ mvn clean install site 
 $ docker-compose up
 ```
 

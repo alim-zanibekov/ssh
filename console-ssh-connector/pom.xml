@@ -6,8 +6,8 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <groupId>com.artic.os.miner</groupId>
-        <artifactId>artic-parent</artifactId>
+        <groupId>com.alimzanibekov.ssh</groupId>
+        <artifactId>ssh</artifactId>
         <version>1.0.0</version>
         <relativePath>../pom.xml</relativePath>
     </parent>
@@ -50,7 +50,8 @@
                     <disableSSLcheck>true</disableSSLcheck>
                     <targetOs>linux</targetOs>
                     <targetArch>amd64</targetArch>
-                    <verbose>false</verbose>
+                    <verbose>true</verbose>
+                    <command>yacc</command>
                 </configuration>
             </plugin>
 

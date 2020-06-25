@@ -17,7 +17,7 @@ services:
     - "9999:9999"
     - "4000:4000"
 
-  console-agent:
+  console-agent-1:
     image: console-agent
     environment:
     - TZ=Etc/UTC
@@ -27,8 +27,24 @@ services:
     - DEBUG=1
     - TOKEN=0000000001
     - SSH_PASSWORD=pass2
-    - ENV SSH_USER=root
+    - SSH_USER=root
     links:
     - console-manager
     depends_on:
     - console-manager
+
+  console-agent-2:
+    image: console-agent
+    environment:
+      - TZ=Etc/UTC
+      - SERVER_AGENT=console-manager:9999
+      - SERVER_SSH=console-manager:8888
+      - SSH_PORT=:22
+      - DEBUG=1
+      - TOKEN=0000000002
+      - SSH_PASSWORD=pass2
+      - SSH_USER=root
+    links:
+      - console-manager
+    depends_on:
+      - console-manager

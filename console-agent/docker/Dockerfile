@@ -18,14 +18,14 @@ RUN apt-get update \
     && sed 's@session\s*required\s*pam_loginuid.so@session optional pam_loginuid.so@g' -i /etc/pam.d/sshd \
     && echo "export VISIBLE=now" >> /etc/profile
 
-RUN mkdir -p /rigos/bin
+RUN mkdir -p /console-agent/bin
 
-COPY console-agent-1.0.0 /rigos/bin
-COPY console-ssh-connector-1.0.0 /rigos/bin
+COPY console-agent-1.0.0 /console-agent/bin
+COPY console-ssh-connector-1.0.0 /console-agent/bin
 
-RUN chmod +x /rigos/bin/console-agent-1.0.0 \
-    && chmod +x /rigos/bin/console-ssh-connector-1.0.0 \
-    && ln -s /rigos/bin/console-agent-1.0.0 /rigos/bin/console-agent \
-    && ln -s /rigos/bin/console-ssh-connector-1.0.0 /rigos/bin/console-ssh-connector
+RUN chmod +x /console-agent/bin/console-agent-1.0.0 \
+    && chmod +x /console-agent/bin/console-ssh-connector-1.0.0 \
+    && ln -s /console-agent/bin/console-agent-1.0.0 /bin/console-agent \
+    && ln -s /console-agent/bin/console-ssh-connector-1.0.0 /bin/console-ssh-connector
 
-CMD nohup /usr/sbin/sshd && /rigos/bin/console-agent $TOKEN
+CMD nohup /usr/sbin/sshd && /bin/console-agent $TOKEN

@@ -6,8 +6,8 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <groupId>com.artic.os.miner</groupId>
-        <artifactId>artic-parent</artifactId>
+        <groupId>com.alimzanibekov.ssh</groupId>
+        <artifactId>ssh</artifactId>
         <version>1.0.0</version>
         <relativePath>../pom.xml</relativePath>
     </parent>
@@ -21,9 +21,9 @@
 
     <dependencies>
         <dependency>
-            <groupId>com.artic.os.miner</groupId>
+            <groupId>com.alimzanibekov.ssh</groupId>
             <artifactId>console-ssh-connector</artifactId>
-            <version>${project.version}</version>
+            <version>1.0.0</version>
             <scope>provided</scope>
             <type>bin</type>
         </dependency>
@@ -60,6 +60,7 @@
                     <targetOs>linux</targetOs>
                     <targetArch>amd64</targetArch>
                     <verbose>false</verbose>
+                    <command>yacc</command>
                 </configuration>
             </plugin>
 
@@ -100,7 +101,7 @@
                         <configuration>
                             <artifactItems>
                                 <artifactItem>
-                                    <groupId>com.artic.os.miner</groupId>
+                                    <groupId>com.alimzanibekov.ssh</groupId>
                                     <artifactId>console-ssh-connector</artifactId>
                                     <version>${project.version}</version>
                                     <type>bin</type>

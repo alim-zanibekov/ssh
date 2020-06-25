@@ -349,7 +349,7 @@ func terminalRegister(w http.ResponseWriter, r *http.Request) {
 	}
 }
 
-func createTermminal(w http.ResponseWriter, r *http.Request) {
+func createTerminal(w http.ResponseWriter, r *http.Request) {
 	setupResponse(&w, r)
 
 	vars := mux.Vars(r)
@@ -414,7 +414,7 @@ func httpServer() {
 	router := mux.NewRouter()
 	router.HandleFunc("/terminal-config", terminalRegister).Methods("POST")
 	router.HandleFunc("/terminal/{token}", terminal).Methods("GET")
-	router.HandleFunc("/create-terminal/{id}", createTermminal).Methods("GET")
+	router.HandleFunc("/create-terminal/{id}", createTerminal).Methods("GET")
 	router.HandleFunc("/agents-list", agentsList).Methods("GET")
 	dir, err := os.Getwd()
 	if err != nil {

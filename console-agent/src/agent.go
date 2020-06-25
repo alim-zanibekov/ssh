@@ -91,7 +91,7 @@ func main() {
 			token := randSeq(30)
 
 			go func() {
-				cmd := exec.Command("/rigos/bin/console-ssh-connector", id, token)
+				cmd := exec.Command("/bin/console-ssh-connector", id, token)
 				log.Printf("Running node...")
 				err := cmd.Run()
 				log.Printf("Node finished with error: %v", err)
