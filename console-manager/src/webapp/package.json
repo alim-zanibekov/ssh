@@ -11,7 +11,7 @@
   "author": "Alim Zanibekov",
   "license": "MIT",
   "dependencies": {
-    "css-loader": "^1.0.0",
+    "css-loader": "^6.7.3",
     "html-webpack-plugin": "^4.3.0",
     "source-map-loader": "^0.2.3",
     "style-loader": "^0.22.1",
